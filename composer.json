@@ -1,0 +1,45 @@
+{
+    "name": "codewizz/laravel-reddit-api",
+    "description": "Laravel Reddit API wrapper",
+    "keywords": [
+        "codewizz",
+        "laravel-reddit-api",
+        "laravel",
+        "reddit",
+        "api"
+    ],
+    "homepage": "https://github.com/codewizz/laravel-reddit-api",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Darius Šilkaitis",
+            "email": "darius@codewizz.com",
+            "homepage": "https://codewizz.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "illuminate/support": "~5.3.28|~5.4.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "4.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "CodeWizz\\RedditAPI\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "CodeWizz\\RedditAPI\\Test\\": "tests"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
