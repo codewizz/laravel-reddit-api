@@ -71,7 +71,7 @@ return [
 
 
 ## About CodeWizz
-CodeWizz is a web applications development agency based in Lithuania. You'll find more information [on our website](https://codewizz.com).
+CodeWizz is a web development agency based in Lithuania. You'll find more information [on our website](https://codewizz.com).
 
 ## License
 
