@@ -4,6 +4,8 @@ Using this package you can easily retrieve data from Reddit API.
 
 Laravel wrapper for https://github.com/rotorcowboy/Phapper
 
+Supports Laravel 5.x, 6.x
+
 Here are a few examples of the provided methods:
 ```php
 use RedditAPI;
