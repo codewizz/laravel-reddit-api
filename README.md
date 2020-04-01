@@ -25,6 +25,10 @@ This package can be installed through Composer.
 composer require codewizz/laravel-reddit-api
 ```
 
+If you are using Laravel 5.5+, the service provider and alias will be registered automatically. You can proceed to "[Publish config](#publish-config)".
+
+### Manually register services
+
 You must install this service provider.
 
 ```php
@@ -46,6 +50,8 @@ This package also comes with a facade, which provides an easy way to call the th
     ...
 ];
 ```
+
+### Publish config
 
 You should publish the config file of this package with this command:
 
