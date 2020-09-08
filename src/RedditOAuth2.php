@@ -28,25 +28,26 @@ class RedditOAuth2
         $this->requestAccessToken();
     }
 
-    public function getAccessToken()
+    public function getAccessToken(): array
     {
-        if (!(isset($this->access_token) && isset($this->token_type) && time() < $this->expiration)) {
+        if (!(isset($this->access_token, $this->token_type) && time() < $this->expiration)) {
             $this->requestAccessToken();
         }
-        return array(
+
+        return [
             'access_token' => $this->access_token,
-            'token_type' => $this->token_type
-        );
+            'token_type'   => $this->token_type,
+        ];
     }
 
-    private function requestAccessToken()
+    private function requestAccessToken(): void
     {
         $url = "{$this->endpoint}/api/v1/access_token";
-        $params = array(
+        $params = [
             'grant_type' => 'password',
-            'username' => $this->username,
-            'password' => $this->password
-        );
+            'username'   => $this->username,
+            'password'   => $this->password,
+        ];
         $options[CURLOPT_USERAGENT] = $this->user_agent;
         $options[CURLOPT_USERPWD] = $this->app_id . ':' . $this->app_secret;
         $options[CURLOPT_RETURNTRANSFER] = true;
@@ -54,7 +55,7 @@ class RedditOAuth2
         $options[CURLOPT_TIMEOUT] = 10;
         $options[CURLOPT_CUSTOMREQUEST] = 'POST';
         $options[CURLOPT_POSTFIELDS] = $params;
-        
+
         $response = null;
         $got_token = false;
         while (!$got_token) {
@@ -67,10 +68,12 @@ class RedditOAuth2
                 $got_token = true;
             } else {
                 if (isset($response->error)) {
-                    if ($response->error === "invalid_grant") {
-                        throw new RedditAuthenticationException("Supplied reddit username/password are invalid or the threshold for invalid logins has been exceeded.", 1);
-                    } elseif ($response->error === 401) {
-                        throw new RedditAuthenticationException("Supplied reddit app ID/secret are invalid.", 2);
+                    if ($response->error === 'invalid_grant') {
+                        throw new RedditAuthenticationException('Supplied reddit username/password are invalid or the threshold for invalid logins has been exceeded.', 1);
+                    }
+
+                    if ($response->error === 401) {
+                        throw new RedditAuthenticationException('Supplied reddit app ID/secret are invalid.', 2);
                     }
                 } else {
                     fwrite(STDERR, "WARNING: Request for reddit access token has failed. Check your connection.\n");
@@ -78,6 +81,7 @@ class RedditOAuth2
                 }
             }
         }
+
         $this->access_token = $response->access_token;
         $this->token_type = $response->token_type;
         $this->expiration = time() + $response->expires_in;

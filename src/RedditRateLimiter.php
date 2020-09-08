@@ -18,7 +18,7 @@ class RedditRateLimiter
     /**
      * Enable the rate limiter, on by default.
      */
-    public function enable()
+    public function enable(): void
     {
         $this->enabled = true;
     }
@@ -26,9 +26,9 @@ class RedditRateLimiter
     /**
      * Disable the rate limiter.
      * This is meant to allow you to perform requests in bursts, but me mindful of reddit's rate limits and your program's structure.
-     * https://github.com/reddit/reddit/wiki/API
+     * https://github.com/reddit/reddit/wiki/API.
      */
-    public function disable()
+    public function disable(): void
     {
         $this->enabled = false;
     }
@@ -36,9 +36,10 @@ class RedditRateLimiter
     /**
      * Set the rate limiter to wait the specified number of seconds past the previous API call to make the next one.
      * If this time has already elapsed during execution of other parts of the program, no wait is needed.
+     *
      * @param int|float $interval Number of seconds that must elapse between each API call.
      */
-    public function setInterval($interval)
+    public function setInterval($interval): void
     {
         $this->interval = $interval;
     }
@@ -46,7 +47,7 @@ class RedditRateLimiter
     /**
      * Used by Phapper object to wait until another API call can be made.
      */
-    public function wait()
+    public function wait(): void
     {
         $now = microtime(true) * 10000;
         $wait_until = $this->last_request + ($this->interval * 10000);

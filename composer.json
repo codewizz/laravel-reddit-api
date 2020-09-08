@@ -21,9 +21,12 @@
     "require": {
         "php": "^7.2",
         "ext-curl": "*",
+        "ext-json": "*",
         "illuminate/support": "^6.0|^7.0|^8.0"
     },
     "require-dev": {
+        "friendsofphp/php-cs-fixer": "^2.16",
+        "gtjamesa/php-standards": "^1.0",
         "orchestra/testbench": "^4.0|^5.0|^6.0",
         "phpunit/phpunit": "^8.4|^9.0"
     },
