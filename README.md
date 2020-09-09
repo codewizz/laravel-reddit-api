@@ -1,10 +1,13 @@
 # Laravel-Reddit-API
 
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/codewizz/laravel-reddit-api.svg?style=flat-square)](https://packagist.org/packages/codewizz/laravel-reddit-api)
+[![Total Downloads](https://img.shields.io/packagist/dt/codewizz/laravel-reddit-api.svg?style=flat-square)](https://packagist.org/packages/codewizz/laravel-reddit-api)
+
 Using this package you can easily retrieve data from Reddit API.
 
 Laravel wrapper for https://github.com/rotorcowboy/Phapper
 
-Supports Laravel 5.x, 6.x
+Supports Laravel 5.x - 8.x.
 
 Here are a few examples of the provided methods:
 ```php
@@ -66,10 +69,10 @@ return [
     'endpoint_standard' => 'https://www.reddit.com',
     'endpoint_oauth' => 'https://oauth.reddit.com',
     
-    'username' => '',
-    'password' => '',
-    'app_id' => '',
-    'app_secret' => '',
+    'username' => env('REDDIT_USERNAME', ''),
+    'password' => env('REDDIT_PASSWORD', ''),
+    'app_id' => env('REDDIT_APP_ID', ''),
+    'app_secret' => env('REDDIT_APP_SECRET', ''),
     
     'response_format' => 'STD', // STD | ARRAY
     
