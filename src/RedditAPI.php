@@ -477,6 +477,37 @@ class RedditAPI
 
         return $response;
     }
+    
+    /**
+     * Submits a cross post.
+     *
+     * @param string      $subreddit            Subreddit in which to post.
+     * @param string      $title                Title of post.
+     * @param string      $crosspost_fullname   Name of original post.
+     * @param bool        $send_replies         Send comment replies to the current user's inbox. True to enable, false to disable.
+     * @param bool        $distinguish          Whether or not it should be mod distinguished (for modded subreddits only).
+     *
+     * @return object Response to API call.
+     */
+    public function submitCrossPost($subreddit, $title, $crosspost_fullname, $send_replies = true, $distinguish = false)
+    {
+        $params = [
+            'api_type'              => 'json',
+            'extension'             => 'json',
+            'kind'                  => 'crosspost',
+            'resubmit'              => 'true',
+            'sendreplies'           => ($send_replies) ? 'true' : 'false',
+            'sr'                    => $subreddit,
+            'title'                 => $title,
+            'crosspost_fullname'    => $crosspost_fullname
+        ];
+        $response = $this->apiCall('/api/submit', 'POST', $params);
+        if ($distinguish && isset($response->json->data->name)) {
+            $this->distinguish($response->json->data->name, true);
+        }
+
+        return $response;
+    }
 
     /**
      * Submits a new text post.
