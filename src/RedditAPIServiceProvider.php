@@ -2,6 +2,7 @@
 
 namespace CodeWizz\RedditAPI;
 
+use CodeWizz\RedditAPI\Interfaces\RedditApiInterface;
 use Illuminate\Support\ServiceProvider;
 
 class RedditAPIServiceProvider extends ServiceProvider
@@ -27,6 +28,18 @@ class RedditAPIServiceProvider extends ServiceProvider
 
         $this->app->singleton('laravel-reddit-api', static function () use ($redditAPIConfig) {
             return new RedditAPI($redditAPIConfig['username'], $redditAPIConfig['password'], $redditAPIConfig['app_id'], $redditAPIConfig['app_secret'], $redditAPIConfig['endpoint_standard'], $redditAPIConfig['endpoint_oauth'], $redditAPIConfig['response_format']);
+        });
+
+        $this->app->bind(RedditApiInterface::class, function () use ($redditAPIConfig) {
+            return new RedditAPI(
+                $redditAPIConfig['username'],
+                $redditAPIConfig['password'],
+                $redditAPIConfig['app_id'],
+                $redditAPIConfig['app_secret'],
+                $redditAPIConfig['endpoint_standard'],
+                $redditAPIConfig['endpoint_oauth'],
+                $redditAPIConfig['response_format']
+            );
         });
     }
 }

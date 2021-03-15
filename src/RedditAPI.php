@@ -2,7 +2,10 @@
 
 namespace CodeWizz\RedditAPI;
 
-class RedditAPI
+
+use CodeWizz\RedditAPI\Interfaces\RedditApiInterface;
+
+class RedditAPI implements RedditApiInterface
 {
     /** @var RedditOAuth2 */
     private $oauth2;
