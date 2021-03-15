@@ -2,6 +2,8 @@
 
 namespace CodeWizz\RedditAPI\Interfaces;
 
+use CodeWizz\RedditAPI\PhapperLive;
+
 interface RedditApiInterface
 {
     public function setDebug($debug): void;
