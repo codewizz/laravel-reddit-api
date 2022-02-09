@@ -8,6 +8,7 @@ $finder = Finder::create()
         $project_path . '/src',
     ])
     ->name('*.php')
+    ->notName('*.blade.php')
     ->ignoreDotFiles(true)
     ->ignoreVCS(true);
 
