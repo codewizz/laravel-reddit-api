@@ -2,7 +2,6 @@
 
 namespace CodeWizz\RedditAPI;
 
-
 use CodeWizz\RedditAPI\Interfaces\RedditApiInterface;
 
 class RedditAPI implements RedditApiInterface
