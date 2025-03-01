@@ -52,7 +52,7 @@ class RedditRateLimiter
         $now = microtime(true) * 10000;
         $wait_until = $this->last_request + ($this->interval * 10000);
         if ($this->enabled && $now < $wait_until) {
-            usleep(($wait_until - $now) * 100);
+            usleep(round(($wait_until - $now) * 100));
         }
         $this->last_request = microtime(true) * 10000;
     }

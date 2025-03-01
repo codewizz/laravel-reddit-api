@@ -2851,12 +2851,12 @@ class RedditAPI implements RedditApiInterface
     public function subscribe($subreddit)
     {
         $subreddit_info = $this->aboutSubreddit($subreddit);
-        if (!isset($subreddit_info->data->name)) {
+        if (!isset($subreddit_info["data"]["name"])) {
             return null;
         }
         $params = [
             'action' => 'sub',
-            'sr'     => $subreddit_info->data->name,
+            'sr'     => $subreddit_info["data"]["name"],
         ];
 
         return $this->apiCall('/api/subscribe', 'POST', $params);
@@ -2872,12 +2872,12 @@ class RedditAPI implements RedditApiInterface
     public function unsubscribe($subreddit)
     {
         $subreddit_info = $this->aboutSubreddit($subreddit);
-        if (!isset($subreddit_info->data->name)) {
+        if (!isset($subreddit_info["data"]["name"])) {
             return null;
         }
         $params = [
             'action' => 'unsub',
-            'sr'     => $subreddit_info->data->name,
+            'sr'     => $subreddit_info["data"]["name"],
         ];
 
         return $this->apiCall('/api/subscribe', 'POST', $params);
