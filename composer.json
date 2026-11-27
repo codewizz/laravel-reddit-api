@@ -22,13 +22,13 @@
         "php": "^8.0",
         "ext-curl": "*",
         "ext-json": "*",
-        "illuminate/support": "^8.0|^9.0"
+        "illuminate/support": "^8.0|^9.0|^10.0|^11.0|^12.0|^13.0"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^3.6",
         "gtjamesa/php-standards": "^2.0",
-        "orchestra/testbench": "^6.0|^7.0",
-        "phpunit/phpunit": "^9.0"
+        "orchestra/testbench": "^6.0|^7.0|^8.0|^9.0|^10.0|^11.0",
+        "phpunit/phpunit": "^9.0|^10.0|^11.0|^12.0"
     },
     "autoload": {
         "psr-4": {
